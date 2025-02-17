@@ -1,13 +1,16 @@
 import RenderModel from '@/components/RenderModel';
-import Hat from '@/components/models/Hat';
 import Image from 'next/image';
 import bg from '../../../../public/background/about-background.png';
 import AboutDetails from '@/components/about';
+
+const Hat = dynamic(() => import('@/components/models/Hat'), { ssr: false });
 
 export default function Home() {
   return (
     <>
       <Image
+        priority
+        sizes="100vw"
         src={bg}
         alt="background"
         className="-z-50 w-full h-full object-cover object-center opacity-25 fixed top-0 left-0"

@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import { Volume2, VolumeX } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { BIRDS_SOUND, PLAY_EVENTS } from '../consts';
-import { isThreeDaysPassed } from '../helpers';
 import { Modal } from './Modal';
 
 const Sound = () => {
@@ -20,7 +19,12 @@ const Sound = () => {
       audioRef.current.play();
     }
     localStorage.setItem('musicConsent', isPlaying ? 'false' : 'true');
-    localStorage.setItem('consentTime', Date.now());
+    setShowModal(false);
+  };
+  const onClose = () => {
+    setIsPlaying(false);
+    audioRef.current.pause();
+    localStorage.setItem('musicConsent', 'false');
     setShowModal(false);
   };
   const handleFirstIserInteraction = useCallback(() => {
@@ -36,8 +40,7 @@ const Sound = () => {
 
   useEffect(() => {
     const consent = localStorage.getItem('musicConsent');
-    const time = localStorage.getItem('consentTime');
-    if (consent && time && isThreeDaysPassed(time)) {
+    if (consent) {
       const condition = consent === 'true';
       setIsPlaying(condition);
       if (condition) {
@@ -52,9 +55,7 @@ const Sound = () => {
 
   return (
     <div className="fixed top-4 right-2.5 xs:right-4 z-50 group">
-      {showModal && (
-        <Modal toggle={toggler} onClose={() => setShowModal(false)} />
-      )}
+      {showModal && <Modal toggle={toggler} onClose={onClose} />}
       <audio ref={audioRef} autoPlay={true} loop>
         <source src={BIRDS_SOUND} type="audio/mpeg" />
         your browser does not support the audio element.

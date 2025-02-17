@@ -3,14 +3,20 @@ import bg from '../../../../public/background/projects-background.png';
 import RenderModel from '@/components/RenderModel';
 import Wizard from '@/components/models/Wizard';
 import Navigation from '@/components/navigation';
-import { Staff } from '@/components/models/Staff';
 import ProjectList from '@/components/projects';
 import { projectsData } from '@/app/data';
+import dynamic from 'next/dynamic';
+
+const Staff = dynamic(() => import('@/components/models/Staff'), {
+  ssr: false,
+});
 
 export default function Home() {
   return (
     <>
       <Image
+        priority
+        sizes="100vw"
         src={bg}
         alt="background"
         className="-z-50 w-full h-full object-cover object-center opacity-25 fixed top-0 left-0"

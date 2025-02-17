@@ -10,6 +10,8 @@ export default function Home() {
   return (
     <>
       <Image
+        priority
+        sizes="100vw"
         src={bg}
         alt="background"
         className="-z-50 w-full h-full object-cover object-center opacity-25 fixed top-0 left-0"
