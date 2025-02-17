@@ -1,8 +1,10 @@
-import Link from 'next/link';
+import { ITEM } from '@/common/consts';
+import { NavLink } from '@/common/motion';
 
 const ProjectLayout = ({ name, description, date, demoLink }) => {
   return (
-    <Link
+    <NavLink
+      variants={ITEM}
       href={demoLink}
       target="_blank"
       className="flex items-center justify-between w-full relative rounded-lg overflow-hidden p-6 custom-bg"
@@ -13,7 +15,7 @@ const ProjectLayout = ({ name, description, date, demoLink }) => {
       </div>
       <div className="self-end flex-1 mx-2 mb-1 bg-transparent border border-b border-dashed border-muted" />
       <p className="text-foreground ">{new Date(date).toDateString()}</p>
-    </Link>
+    </NavLink>
   );
 };
 export default ProjectLayout;

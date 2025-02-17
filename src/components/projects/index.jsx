@@ -1,8 +1,16 @@
+'use client';
+import { motion } from 'framer-motion';
 import ProjectLayout from './ProjectLayout';
+import { CONTAINER } from '@/common/consts';
 
 const ProjectList = ({ projects }) => {
   return (
-    <div className="w-full max-w-auto xl:max-w-4xl mx-auto lg:px-16 md:space-y-8 space-y-6 flex flex-col items-center justify-center">
+    <motion.div
+      initial={CONTAINER.hiddenProp}
+      animate={CONTAINER.showProp}
+      variants={CONTAINER}
+      className="w-full max-w-auto xl:max-w-4xl mx-auto lg:px-16 md:space-y-8 space-y-6 flex flex-col items-center justify-center"
+    >
       {projects.map((project, i) => (
         <ProjectLayout
           key={i}
@@ -12,7 +20,7 @@ const ProjectList = ({ projects }) => {
           demoLink={project.demoLink}
         />
       ))}
-    </div>
+    </motion.div>
   );
 };
 export default ProjectList;

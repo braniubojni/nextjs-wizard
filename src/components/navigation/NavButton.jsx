@@ -1,8 +1,9 @@
-import Link from 'next/link';
-import { getIcon } from './helpers';
+import { ITEM } from '@/common/consts';
+import { NavLink } from '@/common/motion';
+import clsx from 'clsx';
 import ResponsiveComponent from '../ResponsiveComponent';
 import { MOBILE_WIDTH } from './consts';
-import clsx from 'clsx';
+import { getIcon } from './helpers';
 
 const NavButton = ({ x, y, label, link, icon, newTab, labelDir = 'right' }) => {
   return (
@@ -15,7 +16,8 @@ const NavButton = ({ x, y, label, link, icon, newTab, labelDir = 'right' }) => {
               transform: `translate(${x}, ${y})`,
             }}
           >
-            <Link
+            <NavLink
+              variants={ITEM}
               className="text-foreground rounded-full flex items-center justify-center custom-bg"
               aria-label={label}
               href={link}
@@ -29,11 +31,12 @@ const NavButton = ({ x, y, label, link, icon, newTab, labelDir = 'right' }) => {
                   {label}
                 </span>
               </span>
-            </Link>
+            </NavLink>
           </div>
         ) : (
           <div className="cursor-pointer z-50">
-            <Link
+            <NavLink
+              variants={ITEM}
               className="text-foreground rounded-full flex items-center justify-center custom-bg"
               aria-label={label}
               href={link}
@@ -52,7 +55,7 @@ const NavButton = ({ x, y, label, link, icon, newTab, labelDir = 'right' }) => {
                   {label}
                 </span>
               </span>
-            </Link>
+            </NavLink>
           </div>
         )
       }

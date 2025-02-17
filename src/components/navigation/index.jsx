@@ -1,17 +1,22 @@
 'use client';
 
 import { BtnList } from '@/app/data';
-import useScreenSize from '@/hooks/useScreenSize';
+import { motion } from 'framer-motion';
 import ResponsiveComponent from '../ResponsiveComponent';
 import { MAX_DEGREE, MOBILE_WIDTH } from './consts';
 import { renderNavContent } from './helpers';
+import { CONTAINER } from '@/common/consts';
 
 const Navigation = () => {
   const angleIncrement = MAX_DEGREE / BtnList.length;
-  const size = useScreenSize();
 
   return (
-    <div className="w-full fixed h-screen flex items-center justify-center">
+    <motion.div
+      variants={CONTAINER}
+      initial={CONTAINER.hiddenProp}
+      animate={CONTAINER.showProp}
+      className="w-full fixed h-screen flex items-center justify-center"
+    >
       <ResponsiveComponent>
         {({ size }) =>
           size && size.width > MOBILE_WIDTH ? (
@@ -41,7 +46,7 @@ const Navigation = () => {
           )
         }
       </ResponsiveComponent>
-    </div>
+    </motion.div>
   );
 };
 export default Navigation;

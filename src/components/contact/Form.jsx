@@ -1,9 +1,10 @@
 'use client';
-import React from 'react';
-import { useForm } from 'react-hook-form';
 import emailjs from '@emailjs/browser';
+import { motion } from 'framer-motion';
+import { useForm } from 'react-hook-form';
 import { toast, Toaster } from 'sonner';
 import { SEND_MSG_DESC, SUCCESS_MSG_DESC, THROTTLE_DELAY } from './consts';
+import { CONTAINER, ITEM } from '@/common/consts';
 
 export default function Form() {
   const {
@@ -48,11 +49,15 @@ export default function Form() {
   return (
     <>
       <Toaster />
-      <form
+      <motion.form
+        variants={CONTAINER}
+        initial={CONTAINER.hiddenProp}
+        animate={CONTAINER.showProp}
         onSubmit={handleSubmit(onSubmit)}
         className="max-w-md w-full flex flex-col items-center justify-center space-y-4"
       >
-        <input
+        <motion.input
+          variants={ITEM}
           type="text"
           placeholder="name"
           className="w-full p-2 rounded-md shadow-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 custom-bg"
@@ -67,7 +72,8 @@ export default function Form() {
             {errors.name.message}
           </span>
         )}
-        <input
+        <motion.input
+          variants={ITEM}
           type="text"
           placeholder="email"
           className="w-full p-2 rounded-md shadow-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 custom-bg"
@@ -80,7 +86,8 @@ export default function Form() {
             {errors.email.message}
           </span>
         )}
-        <textarea
+        <motion.textarea
+          variants={ITEM}
           placeholder="message"
           className="w-full p-2 rounded-md shadow-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 custom-bg"
           {...register('message', {
@@ -108,7 +115,7 @@ export default function Form() {
           className="px-10 py-4 rounded-md shadow-lg bg-background border border-accent/30 border-solid hover:shadow-glass-sm backdrop-blur-sm text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 custom-bg cursor-pointer capitalize"
           type="submit"
         />
-      </form>
+      </motion.form>
     </>
   );
 }
