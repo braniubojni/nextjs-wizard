@@ -1,3 +1,4 @@
+'use client';
 import { ITEM } from '@/common/consts';
 import { NavLink } from '@/common/motion';
 import clsx from 'clsx';
