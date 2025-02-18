@@ -3,7 +3,12 @@ import emailjs from '@emailjs/browser';
 import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { toast, Toaster } from 'sonner';
-import { SEND_MSG_DESC, SUCCESS_MSG_DESC, THROTTLE_DELAY } from './consts';
+import {
+  ERROR_MSG_DESC,
+  SEND_MSG_DESC,
+  SUCCESS_MSG_DESC,
+  THROTTLE_DELAY,
+} from './consts';
 import { CONTAINER, ITEM } from '@/common/consts';
 
 export default function Form() {
