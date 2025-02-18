@@ -1,7 +1,8 @@
+import AboutDetails from '@/components/about';
 import RenderModel from '@/components/RenderModel';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import bg from '../../../../public/background/about-background.png';
-import AboutDetails from '@/components/about';
 
 const Hat = dynamic(() => import('@/components/models/Hat'), { ssr: false });
 

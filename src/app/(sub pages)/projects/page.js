@@ -1,15 +1,9 @@
+import { projectsData } from '@/app/data';
+import RenderModel from '@/components/RenderModel';
+import { Staff } from '@/components/models/Staff';
+import ProjectList from '@/components/projects';
 import Image from 'next/image';
 import bg from '../../../../public/background/projects-background.png';
-import RenderModel from '@/components/RenderModel';
-import Wizard from '@/components/models/Wizard';
-import Navigation from '@/components/navigation';
-import ProjectList from '@/components/projects';
-import { projectsData } from '@/app/data';
-import dynamic from 'next/dynamic';
-
-const Staff = dynamic(() => import('@/components/models/Staff'), {
-  ssr: false,
-});
 
 export default function Home() {
   return (
